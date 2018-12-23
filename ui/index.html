@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<script>
+    window.onload = fetch('https://da2e8089.ngrok.io/matches-per-year')
+    .then((resp) => resp.json())
+    .then(data => console.log(data)).catch(err => console.log(err));
+
+</script>
 
 
 <body>
-<h1>hi, am vineeta sandeep bhut lul h</h1>    
+    <h1>hi, am vineeta sandeep bhut lul h</h1>
 </body>
+
 </html>

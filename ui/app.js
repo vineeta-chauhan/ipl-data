@@ -8,4 +8,4 @@ app.get('/index', (req, res) => res.send('Hello World!')  )
 app.get('/', function(req, res){
     res.sendFile('index.html',{root: __dirname});
 });
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`server start listening on port ${port}!`))
