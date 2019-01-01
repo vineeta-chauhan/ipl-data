@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+        matches played per year
+    </title>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+</script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
+    window.onload = fetch('https://90538d9f.ngrok.io/matches-won-teams-every-yr')
+        .then((resp) => resp.json())
+        .then(data => {
+                $('#container').highcharts({
+                    chart: {
+                        type: 'column',
+                    },
+                    title: {
+                        text: 'Simple Bar Graph'
+                    },
+                    xAxis: {
+                        categories: Object.keys(Object.values(data)[0]),
+                        allowDecimals: false,
+                        title: {
+                            text: "Years",
+                            margin: 10,
+                            style: {
+                                color: 'blue',
+                                fontWeight: 'bold'
+
+                            }
+                        },
+                        crosshair: true
+                    },
+                    yAxis: {
+                        allowDecimals: false,
+                        tickInterval: 1,
+                        min: 0,
+                        title: {
+                            text: "No of Matches",
+                            margin: 10,
+                            style: {
+                                color: 'blue',
+                                fontWeight: 'bold'
+
+                            }
+                        }
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            groupPadding: 0,
+                            shadow: false
+                        }
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    series: Object.keys(data).map((ele) => {
+                        return {
+                            pointWidth: 5,
+                            name: ele,
+                            data: Object.values(data[ele])
+                        }
+                    }),
+
+
+                });
+
+            }).catch(err => console.log(err));
+</script>
+
+
+<body>
+
+    <div id="container" style="width: 100%; height: 600px; margin: 0 auto"></div>
+</body>
+
+</html>

@@ -7,16 +7,80 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+</script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
 <script>
-    window.onload = fetch('https://da2e8089.ngrok.io/matches-per-year')
-    .then((resp) => resp.json())
-    .then(data => console.log(data)).catch(err => console.log(err));
 
+    window.onload = fetch('http://localhost:3001/')
+    .then((resp) => resp.json())
+    .then(data =>{
+        $('#container').highcharts(
+            {
+                chart: {
+                    type: 'bar',
+                },
+                title: {
+                    text: 'Simple Bar Graph'
+                },
+                xAxis: {
+                    categories: Object.keys(data).reverse(),
+                    allowDecimals: false,
+                    title: {
+                        text: "Years",
+                        margin: 10,
+                        style: {
+                            color: 'red',
+                            fontWeight: 'bold'
+
+                        }
+                    }
+                },
+                yAxis: {
+                    allowDecimals: false,
+                    min: 0,
+                    title: {
+                        text: "No of Matches",
+                        margin: 10,
+                        style: {
+                            color: 'blue',
+                            fontWeight: 'bold'
+
+                        }
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.05,
+                        borderWidth: 0
+                    }
+                },
+                series: [
+                    {
+                        pointWidth: 20,
+                        data: Object.values(data).reverse(),
+                        name: "no of matches",
+                    },
+                ],
+
+            }
+        );
+
+    }).catch(err => console.log(err));
 </script>
 
 
 <body>
-    <h1>hi, am vineeta sandeep bhut lul </h1>
+    <h1> </h1>
+    <div id="container" style="width: 80%; height: 500px; margin: 0 auto"></div>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
