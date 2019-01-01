@@ -1,0 +1,21 @@
+{
+  "name": "ipl-data-plot",
+  "version": "1.0.0",
+  "description": "api and frontend for graph ploting with csv data",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vineeta-chauhan/ipl-data.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vineeta-chauhan/ipl-data/issues"
+  },
+  "homepage": "https://github.com/vineeta-chauhan/ipl-data#readme"
+}
